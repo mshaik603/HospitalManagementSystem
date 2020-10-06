@@ -1,0 +1,52 @@
+[
+    {"patientId": "1011", "gender": "male", "patientName":{
+        "firstName":"Muzammil",
+        "surName":"Shaik"
+        },
+     "age":24,"maritalStatus":"Married","dob":"1996-05-09",
+     "religion":"Muslim","phoneNumber":"9738760046","emailAddress":"mshaik603@gmail.com",
+     "nationality":"Indian","state":"karnataka","address":"1st ward, Cowl Bazzar, Ballari-583102 ","occupation":"SoftwareEnginner",
+     "kin":{
+         "kinName":"bro","kinRelationShip":"Brother","kinPhoneNumber":"9632188506","kinEmailAddress":"Adbul69362@gmail.com",
+         "kinOccupation":"BusinessMan","kinAddress":"Ballari"
+     }
+    },
+    {"patientId": "2011", "gender": "male", "patientName":{
+        "firstName":"Tony",
+        "surName":"Stark"
+        },
+     "age":42,"maritalStatus":"UnMarried","dob":"1978-05-09",
+     "religion":"Hindu","phoneNumber":"9945862962","emailAddress":"Adbul69362@gmail.com",
+     "nationality":"American","state":"New york","address":"1667 K St NW #400, Washington, DC 20006, United States","occupation":"BusinessMan",
+     "kin":{
+         "kinName":"bro","kinRelationShip":"Brother","kinPhoneNumber":"9632188506","kinEmailAddress":"Adbul69362@gmail.com",
+         "kinOccupation":"BusinessMan","kinAddress":"Ballari"
+     }
+    },
+    {"patientId": "3011", "gender": "female", "patientName":{
+        "firstName":"Steve",
+        "surName":"Rogers"
+        },
+     "age":42,"maritalStatus":"UnMarried","dob":"1978-05-09",
+     "religion":"Muslim","phoneNumber":"9632188506","emailAddress":"Steve11Rogers@gmail.com",
+     "nationality":"Indian","state":"karnataka","address":"Ballari","occupation":"BusinessMan",
+     "kin":{
+         "kinName":"bro","kinRelationShip":"Brother","kinPhoneNumber":"9632188506","kinEmailAddress":"Adbul69362@gmail.com",
+         "kinOccupation":"BusinessMan","kinAddress":"Ballari"
+     }
+    },
+    {"patientId": "4011", "gender": "female", "patientName":{
+        "firstName":"Bruce",
+        "surName":"Banner"
+        },
+     "age":32,"maritalStatus":"UnMarried","dob":"1988-08-09",
+     "religion":"Muslim","phoneNumber":"9980728101","emailAddress":"BruceSmash@hotmail.com",
+     "nationality":"Indian","state":"karnataka","address":"Ballari","occupation":"BusinessMan",
+     "kin":{
+         "kinName":"bro","kinRelationShip":"Brother","kinPhoneNumber":"9632188506","kinEmailAddress":"Adbul69362@gmail.com",
+         "kinOccupation":"BusinessMan","kinAddress":"Ballari"
+     }
+    }
+
+
+]

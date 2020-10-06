@@ -1,0 +1,173 @@
+<h1 mat-dialog-title>PATIENT FORM</h1>
+<mat-dialog-content>
+    <form [formGroup]="patientForm">
+        <!--PatientId gender-->
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Patient Id</label>
+                <input [class.is-invalid]="patientId.invalid && patientId.touched" formControlName="patientId" type="text" class="form-control">
+                    <small *ngIf="patientId.errors?.required && patientId.touched" class="text-danger">Patient Id is mandatory</small>
+            </div>
+            <div class="form-group col-md-6">
+            <label>Gender</label>
+            <div class="form-check">
+                <input [class.is-invalid]="gender.invalid && gender.touched" type="radio" formControlName="gender" value="male" class="form-check-input">
+                <label>Male</label>
+            </div>
+            <div class="form-check">
+                <input [class.is-invalid]="gender.invalid && gender.touched" type="radio" formControlName="gender" value="female" class="form-check-input">
+                <label>Female</label>
+            </div>
+            <small *ngIf="gender.errors?.required && gender.touched" class="text-danger">Gender is mandatory field</small>
+            </div>  
+        </div>
+        <!--PatientName group, SurNAme FirstName-->
+        <div formGroupName="patientName" class="row">
+            <div class="form-group col-md-4">
+                <label>FirstName</label>
+                <input [class.is-invalid]="firstName.invalid && firstName.touched" formControlName="firstName" type="text" class="form-control">
+                <small *ngIf="firstName.errors?.required && firstName.touched" class="text-danger">First Name is mandatory field</small>
+            </div>
+            <div class="form-group col-md-4">
+                <label>SurName</label>
+                <input [class.is-invalid]="surName.invalid && surName.touched" formControlName="surName" type="text" class="form-control">
+                <small *ngIf="surName.errors?.required && surName.touched" class="text-danger">Sur Name is mandatory field</small>
+            </div>
+        </div>
+        <!--age maritalStatus DateOfBirth-->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Age</label>
+                <input [class.is-invalid]="age.invalid && age.touched" formControlName="age" type="text" class="form-control">
+                <!-- <div *ngIf="patientForm.invalid && age.touched">
+                    <small *ngIf="age.errors?.required" class="text-danger">Age is mandatory</small>
+                    <small *ngIf="age.errors?.pattern" class="text-danger">Invalid - Age should be a Number</small>
+                    <small *ngIf="patientForm.errors?.ageMismatch && !age.errors?.pattern" class="text-danger">Invalid Age as per DOB your age should be {{patientForm.errors?.age}}</small>
+                </div> -->
+                <div *ngIf="age.invalid && age.touched">
+                    <small *ngIf="age.errors?.required" class="text-danger">Age is mandatory</small>
+                    <small *ngIf="age.errors?.pattern" class="text-danger">Invalid - Age should be a Number</small>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Marital Status</label>
+                <select [class.is-invalid]="maritalStatus.invalid && maritalStatus.touched" class="custom-select" (change)="changeMstatus($event)" formControlName="maritalStatus">
+                    <option value="">Choos Marital Status</option>
+                    <option *ngFor="let status of martialS" [ngValue]="status">{{status}}</option>
+                </select>
+                <small *ngIf="maritalStatus.errors?.required && maritalStatus.touched" class="text-danger">Choose your Marital Status</small>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Date Of Birth</label>
+                <input [class.is-invalid]="dob.invalid && dob.touched" formControlName="dob" type="date" class="form-control">
+                <div *ngIf="dob.invalid && dob.touched">
+                    <small *ngIf="dob.errors?.required" class="text-danger">Date of Birth is mandatory</small>
+                    <small *ngIf="dob.errors?.misMatch" class="text-danger">Date of Birth cannot be future Date</small>
+                </div>
+            </div>
+        </div>
+               <!--religion phoneNumber emailAddress-->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Religion</label>
+                <select [class.is-invalid]="religion.invalid && religion.touched" class="custom-select" (change)="changeRstatus($event)" formControlName="religion">
+                    <option value="">Choos Your Religion</option>
+                    <option *ngFor="let value of religionS" [ngValue]="value">{{value}}</option>
+                </select>
+                <small *ngIf="religion.errors?.required && religion.touched" class="text-danger">Choose your Religion</small>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Phone Number</label>
+                <input [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched" formControlName="phoneNumber" type="text" class="form-control">
+                <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                    <small *ngIf="phoneNumber.errors?.required" class="text-danger">Phone Number is required</small>
+                    <small *ngIf="phoneNumber.errors?.pattern" class="text-danger">Invalid Phone Number</small>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Email Address</label>
+                <input [class.is-invalid]="emailAddress.invalid && emailAddress.touched" formControlName="emailAddress" type="text" class="form-control">
+                <div *ngIf="emailAddress.invalid && emailAddress.touched">
+                    <small *ngIf="emailAddress.errors?.required" class="text-danger">Email Addres is required</small>
+                    <small *ngIf="emailAddress.errors?.pattern" class="text-danger">Invalid Email Addres</small>
+                </div>
+            </div>
+        </div>
+        <!--nationality occupation-->
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Nationality</label>
+                <input [class.is-invalid]="nationality.invalid && nationality.touched" formControlName="nationality" type="text" class="form-control">
+                <small *ngIf="nationality.errors?.required && nationality.touched" class="text-danger">Nationality is mandatory field</small>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Occupation</label>
+                <input [class.is-invalid]="occupation.invalid && occupation.touched" formControlName="occupation" type="text" class="form-control">
+                <small *ngIf="occupation.errors?.required && occupation.touched" class="text-danger">Occupation is mandatory field</small>
+            </div>
+        </div>
+         <!--state Address-->
+         <div class="row">
+            <div class="form-group col-md-4">
+                <label>State</label>
+                <input [class.is-invalid]="state.invalid && state.touched" formControlName="state" type="text" class="form-control">
+                <small *ngIf="state.errors?.required && state.touched" class="text-danger">State is mandatory field</small>
+            </div>
+             <div class="form-group col-md-8">
+                 <label>Address</label>
+                 <input [class.is-invalid]="address.invalid && address.touched" formControlName="address" type="text" class="form-control">
+                 <small *ngIf="address.errors?.required && address.touched" class="text-danger">Address is mandatory field</small>
+             </div>
+         </div>
+         <h5>Next Of Kin Information</h5>
+         <!-- Next Kin Information -->
+         <div formGroupName="kin">
+             <div class="row">
+                <div class="form-group col-md-4">
+                    <label>Name</label>
+                    <input [class.is-invalid]="kinName.invalid && kinName.touched" formControlName="kinName" type="text" class="form-control">
+                    <small *ngIf="kinName.errors?.required && kinName.touched" class="text-danger">Name is mandatory field</small>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>RelationShip</label>
+                    <input [class.is-invalid]="kinRelationShip.invalid && kinRelationShip.touched" formControlName="kinRelationShip" type="text" class="form-control">
+                    <small *ngIf="kinRelationShip.errors?.required && kinRelationShip.touched" class="text-danger">Relationship is mandatory field</small>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Phone Number</label>
+                    <input [class.is-invalid]="kinPhoneNumber.invalid && kinPhoneNumber.touched" formControlName="kinPhoneNumber" type="text" class="form-control">
+                    <div *ngIf="kinPhoneNumber.invalid && kinPhoneNumber.touched">
+                        <small *ngIf="kinPhoneNumber.errors?.required" class="text-danger">Phone Number is required</small>
+                        <small *ngIf="kinPhoneNumber.errors?.pattern" class="text-danger">Invalid Phone Number</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label>Email Address</label>
+                    <input [class.is-invalid]="kinEmailAddress.invalid && kinEmailAddress.touched" formControlName="kinEmailAddress" type="text" class="form-control">
+                    <div *ngIf="kinEmailAddress.invalid && kinEmailAddress.touched">
+                        <small *ngIf="kinEmailAddress.errors?.required" class="text-danger">Email Addres is required</small>
+                        <small *ngIf="kinEmailAddress.errors?.pattern" class="text-danger">Invalid Email Addres</small>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Occupation</label>
+                    <input [class.is-invalid]="kinOccupation.invalid && kinOccupation.touched" formControlName="kinOccupation" type="text" class="form-control">
+                    <small *ngIf="kinOccupation.errors?.required && kinOccupation.touched" class="text-danger">Occupation is mandatory field</small>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Address</label>
+                    <input [class.is-invalid]="kinAddress.invalid && kinAddress.touched" formControlName="kinAddress" type="text" class="form-control">
+                    <small *ngIf="kinAddress.errors?.required && kinAddress.touched" class="text-danger">Address is mandatory field</small>
+                </div>
+                
+            </div>
+         </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!patientForm.valid" [mat-dialog-close]="patientForm.getRawValue()">Submit</button>
+    <button mat-raised-button color="primary"  mat-dialog-close>Close</button>
+</mat-dialog-actions>
